@@ -20,6 +20,10 @@ const validateRegistData = (body) => {
     isValidated = false;
     errors.userPassword = "7文字以上のパスワードを設定してください。";
   }
+  if (body.userPassword !== body.userConfirmPassword) {
+    isValidated = false;
+    errors.userPassword = "パスワードが一致しません。";
+  }
   return isValidated ? undefined : errors;
 };
 
@@ -38,11 +42,11 @@ router.get("/register", (req, res) => {
 // ユーザーを登録する処理
 router.post("/create", (req, res) => {
   const errors = validateRegistData(req.body);
+  const inputData = changeUser(req.body);
   //validationをかける
   if (errors) {
     //エラーがあれば移動しない
-    changeUser(req.body);
-    res.render("account/register.ejs", { currentUser, errors });
+    res.render("account/register.ejs", { inputData, errors });
     return;
   } else {
     //エラーなければ

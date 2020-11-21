@@ -9,7 +9,7 @@
   <%- include( "../_share/navbar.ejs") %>
   <main class="container">
     <% const errors = locals.errors || {} %>
-    <% const currentUser = locals.currentUser || {} %>
+    <% const inputData = locals.inputData || {} %>
     <% if (locals.errors) { %>
     <div class="alert alert-danger">
       <% for (var key in errors) { %>
@@ -22,15 +22,16 @@
       <h1 class=" h3 mb-3 font-weight-normal">Please Register</h1>
       <label for="inputName" class="sr-only">Name</label>
       <input type="text" name="userName" id="inputName" class="form-control" placeholder="Name"
-        value="<%= currentUser.name%>" autofocus />
+        value="<%= inputData.name%>" autofocus />
       <label for="inputEmail" class="sr-only">Email address</label>
       <input type="email" name="userEmail" id="inputEmail" class="form-control" placeholder="Email address"
-        value="<%= currentUser.email%>" autofocus required />
+        value="<%= inputData.email%>" autofocus required />
       <label for="inputPassword" class="sr-only">Password</label>
       <input type="password" name="userPassword" id="inputPassword" class="form-control" placeholder="Password"
-        value="<%= currentUser.password%>" required />
-      <label for="inputPasswordConfirm" class="sr-only">Password</label>
-      <input type="password" id="inputPasswordConfirm" class="form-control" placeholder="Confirm Password" required />
+        value="<%= inputData.password%>" required />
+      <label for="inputPasswordConfirm" class="sr-only">Confirm Password</label>
+      <input type="password" id="inputPasswordConfirm" class="form-control" name="userConfirmPassword"
+        placeholder="Confirm Password" required />
 
       <button class="btn btn-lg btn-primary btn-block" type="submit" id="submitBtn">
         Register
