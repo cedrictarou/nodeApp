@@ -5,8 +5,7 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-    <% const currnetUser = locals.currnetUser || {} %>
-    <% if (locals.currentUser) { %>
+    <% if (currentUser) { %>
     <p class="text-white"><%= currentUser.name %></p>
     <form class="form-inline my-2 my-lg-0" action="/logout" method="POST">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button>
