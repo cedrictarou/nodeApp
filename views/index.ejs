@@ -2,28 +2,22 @@
 <html lang="ja">
 
 <head>
-  <%- include( "./_share/stylesheets.ejs") %>
+    <%- include( "./_share/stylesheets.ejs") %>
 </head>
 
 <body class="text-center">
+    <%- include( "./_share/navbar.ejs") %>
 
-  <%- include( "./_share/navbar.ejs") %>
+        <main class="container">
+            <div>
+                <h1>NodeApp</h1>
+                <p class="lead">
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Neque voluptate quasi possimus dolor accusantium odio, debitis id corporis? Illum facilis repellendus pariatur voluptates vero ex inventore cum rerum eum dolorum.
+                </p>
+            </div>
+        </main>
 
-  <main class="container">
-    <div>
-      <h1>Dash Board</h1>
-      <p class="lead">
-        Welcome
-        <% if (currentUser) { %>
-        <span><%= currentUser.name %>!</span> You're logged in!!
-        <% } else { %>
-        <span>Please register or login.</span>
-        <% } %>
-      </p>
-    </div>
-  </main>
-
-  <%- include( "./_share/javascripts.ejs") %>
+        <%- include( "./_share/javascripts.ejs") %>
 </body>
 
 </html>

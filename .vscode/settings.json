@@ -1,8 +1,4 @@
 {
   "git.ignoreLimitWarning": true,
-  "prettier.arrowParens": "always",
-  "editor.formatOnPaste": true,
-  "editor.formatOnSave": true,
-  "editor.tabSize": 2,
-  "editor.wordWrap": "on",
+  "prettier.arrowParens": "avoid"
 }
