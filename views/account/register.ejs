@@ -8,21 +8,23 @@
 <body class="text-center">
   <%- include( "../_share/navbar.ejs") %>
   <main class="container">
-    <% const errors = locals.errors || {} %>
+    <% const errors_msg = locals.errors_msg || {} %>
     <% const inputData = locals.inputData || {} %>
-    <% if (locals.errors) { %>
+    <% if (locals.errors_msg) { %>
     <div class="alert alert-danger">
-      <% for (var key in errors) { %>
-      <div><i class="fa fa-exclamation-circle fa-fw mr-2"></i><%= errors[key] %></div>
-      <% } %>
+      <% errors_msg.forEach (error_msg => { %>
+      <div><i class="fa fa-exclamation-circle fa-fw mr-2"></i><%= error_msg %></div>
+      <% }) %>
     </div>
+
+
     <% } %>
     <form class="form-signin" method="POST" action="/create">
 
-      <h1 class=" h3 mb-3 font-weight-normal">Please Register</h1>
+      <h1 class=" h3 mb-3 font-weight-normal">Please Regist</h1>
       <label for="inputName" class="sr-only">Name</label>
       <input type="text" name="userName" id="inputName" class="form-control" placeholder="Name"
-        value="<%= inputData.name%>" autofocus />
+        value="<%= inputData.name%>" autofocus required />
       <label for="inputEmail" class="sr-only">Email address</label>
       <input type="email" name="userEmail" id="inputEmail" class="form-control" placeholder="Email address"
         value="<%= inputData.email%>" autofocus required />
