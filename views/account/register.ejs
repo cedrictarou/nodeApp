@@ -2,32 +2,49 @@
 <html lang="ja">
 
 <head>
-    <%- include( "../_share/stylesheets.ejs") %>
+  <%- include( "../_share/stylesheets.ejs") %>
 </head>
 
 <body class="text-center">
-    <%- include( "../_share/navbar.ejs") %>
+  <%- include( "../_share/navbar.ejs") %>
+  <main class="container">
+    <% const errors_msg = locals.errors_msg || {} %>
+    <% const inputData = locals.inputData || {} %>
+    <% if (locals.errors_msg) { %>
+    <div class="alert alert-danger">
+      <% errors_msg.forEach (error_msg => { %>
+      <div><i class="fa fa-exclamation-circle fa-fw mr-2"></i><%= error_msg %></div>
+      <% }) %>
+    </div>
 
-        <main class="container">
-            <form class="form-signin">
-                <h1 class="h3 mb-3 font-weight-normal">Please Register</h1>
-                <label for="inputName" class="sr-only">Name</label>
-                <input type="text" id="inputName" class="form-control" placeholder="Name" required autofocus />
-                <label for="inputEmail" class="sr-only">Email address</label>
-                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus />
-                <label for="inputPassword" class="sr-only">Password</label>
-                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required />
-                <label for="inputPasswordConfirm" class="sr-only">Password</label>
-                <input type="password" id="inputPasswordConfirm" class="form-control" placeholder="Confirm Password" required />
 
-                <button class="btn btn-lg btn-primary btn-block" type="submit">
-          Register
-        </button>
-                <p class="mt-5 mb-3 text-muted">&copy; 2020</p>
-            </form>
-        </main>
+    <% } %>
+    <form class="form-signin" method="POST" action="/create">
 
-        <%- include( "../_share/javascripts.ejs") %>
+      <h1 class=" h3 mb-3 font-weight-normal">Please Regist</h1>
+      <label for="inputName" class="sr-only">Name</label>
+      <input type="text" name="userName" id="inputName" class="form-control" placeholder="Name"
+        value="<%= inputData.name%>" autofocus required />
+      <label for="inputEmail" class="sr-only">Email address</label>
+      <input type="email" name="userEmail" id="inputEmail" class="form-control" placeholder="Email address"
+        value="<%= inputData.email%>" autofocus required />
+      <label for="inputPassword" class="sr-only">Password</label>
+      <input type="password" name="userPassword" id="inputPassword" class="form-control" placeholder="Password"
+        value="<%= inputData.password%>" required />
+      <label for="inputPasswordConfirm" class="sr-only">Confirm Password</label>
+      <input type="password" id="inputPasswordConfirm" class="form-control" name="userConfirmPassword"
+        placeholder="Confirm Password" required />
+
+      <button class="btn btn-lg btn-primary btn-block" type="submit" id="submitBtn">
+        Register
+      </button>
+      <p class="mt-5 mb-3 text-muted">&copy; 2020</p>
+    </form>
+  </main>
+
+  <%- include( "../_share/javascripts.ejs") %>
+
+  </script>
 </body>
 
 </html>
