@@ -31,11 +31,11 @@ const registUser = (req, res, next) => {
       inputData,
       errors_msg,
     });
-  } else {
-    //エラーなければ
-    changeUser(req.body);
-    res.redirect(`/?userName=${currentUser.name}`);
+    return;
   }
+  //エラーなければ
+  changeUser(req.body);
+  res.redirect(`/?userName=${currentUser.name}`);
 };
 
 module.exports = {
